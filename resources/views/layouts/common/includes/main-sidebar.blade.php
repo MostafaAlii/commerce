@@ -5,22 +5,39 @@
             <div class="scrollbar side-menu-bg">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
-                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <!-- Start Admin Managment Menu-->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Category Managment</li>
+                    <li><a href="{{ route('admin.dashboard') }}">لوحه التحكم</a></li>
+                    <!-- Start Category Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">اداره الاقسام</li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#category_managment">
                             <div class="pull-left">
                                 <i class="ti-palette"></i>
-                                <span class="right-nav-text">Category Managment</span></div>
+                                <span class="right-nav-text">اداره الاقسام</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="category_managment" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('category.index')}}">Category</a></li>
+                            <li><a href="{{route('category.index')}}">الاقسام</a></li>
                         </ul>
                     </li>
-                    <!-- End Admin Managment Menu-->
+                    <!-- End Category Managment Menu-->
+
+                    <!-- Start Brands Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">اداره الماركات</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#brands_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">اداره الماركات</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="brands_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('brands.index')}}">الماركات</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Brands Managment Menu-->
+
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
                     <!-- menu item Elements-->

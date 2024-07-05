@@ -3,15 +3,15 @@
     <div class="row">
         <div class="col-2">
             <div class="form-group">
-                <input type="text" name="keyword" value="{{ old('keyword', request()->input('keyword')) }}" class="form-control" placeholder="Search here">
+                <input type="text" name="keyword" value="{{ old('keyword', request()->input('keyword')) }}" class="form-control" placeholder="اكتب هنا">
             </div>
         </div>
         <div class="col-2 p1">
             <div class="form-group p1">
                 <select name="status" class="form-control p1">
                     <option value="">---</option>
-                    <option value="1" {{ old('status', request()->input('status')) == 1 ? 'selected' : '' }}>Active</option>
-                    <option value="0" {{ old('status', request()->input('status')) == 0 ? 'selected' : '' }}>Inactive</option>
+                    <option value="1" {{ old('status', request()->input('status')) == 1 ? 'selected' : '' }}>فعال</option>
+                    <option value="0" {{ old('status', request()->input('status')) == 0 ? 'selected' : '' }}>غير فعال</option>
                 </select>
             </div>
         </div>
@@ -20,8 +20,8 @@
                 <select name="sort_by" class="form-control p1">
                     <option value="">---</option>
                     <option value="id" {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>ID</option>
-                    <option value="name" {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>Name</option>
-                    <option value="created_at" {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>Created at</option>
+                    <option value="name" {{ old('sort_by', request()->input('sort_by')) == 'name' ? 'selected' : '' }}>الاسم</option>
+                    <option value="created_at" {{ old('sort_by', request()->input('sort_by')) == 'created_at' ? 'selected' : '' }}>الاضافة</option>
                 </select>
             </div>
         </div>
@@ -29,8 +29,8 @@
             <div class="form-group">
                 <select name="order_by" class="form-control p1">
                     <option value="">---</option>
-                    <option value="asc" {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>Ascending</option>
-                    <option value="desc" {{ old('order_by', request()->input('order_by')) == 'desc' ? 'selected' : '' }}>Descending</option>
+                    <option value="asc" {{ old('order_by', request()->input('order_by')) == 'asc' ? 'selected' : '' }}>تصاعدى</option>
+                    <option value="desc" {{ old('order_by', request()->input('order_by')) == 'desc' ? 'selected' : '' }}>تنازلى</option>
                 </select>
             </div>
         </div>
@@ -48,7 +48,7 @@
         <div class="col-2"></div>
         <div class="col-1">
             <div class="form-group">
-                <button type="submit" name="submit" class="btn btn-link">Search</button>
+                <button type="submit" name="submit" class="btn btn-link">بحث</button>
             </div>
         </div>
     </div>
