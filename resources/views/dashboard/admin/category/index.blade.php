@@ -2,7 +2,7 @@
 @section('css')
 <link href="{{ URL::asset('assets/css/plugins/toastr.css') }}" rel="stylesheet">
 @section('title')
-    Categories
+الاقسام
 @stop
 @endsection
 @section('page-header')
@@ -32,27 +32,27 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <div class="card-header py-3 d-flex">
-                    <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">الاقسام</h6>
                     <div class="ml-auto">
                         <a href="{{ route('category.create') }}" class="btn btn-primary">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            <span class="text">Add new category</span>
+                            <span class="text">اضافة قسم جديد</span>
                         </a>
                     </div>
                 </div>
                 @include('dashboard.admin.category.filter.filter')
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Products count</th>
-                            <th>Parent</th>
-                            <th>Status</th>
-                            <th>Created at</th>
-                            <th class="text-center" style="width: 30px;">Actions</th>
+                            <th>الاسم</th>
+                            <th>عدد المنتجات</th>
+                            <th>القسم الرئيسى</th>
+                            <th>الحاله</th>
+                            <th>اضاف منذ</th>
+                            <th class="text-center" style="width: 30px;">العمليات</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -1,19 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Dashboard\Admin;
-
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\ProductCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
-
-class CategoryController extends Controller
-{
-    public function index()
-    {
+class CategoryController extends Controller {
+    public function index() {
         $categories = Category::/*withCount('products')
             ->*/when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
@@ -26,20 +17,16 @@ class CategoryController extends Controller
         return view('dashboard.admin.category.index', compact('categories'));
     }
 
-    public function create()
-    {
+    public function create() {
         $main_categories = Category::whereNull('parent_id')->get(['id', 'name']);
         return view('dashboard.admin.category.create', compact('main_categories'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $input['name'] = $request->name;
         $input['status'] = $request->status;
         $input['parent_id'] = $request->parent_id;
-
         Category::create($input);
-
         return redirect()->route('category.index')->with([
             'message' => 'Created successfully',
             'alert-type' => 'success'
@@ -73,10 +60,8 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function destroy(Category $category)
-    {
+    public function destroy(Category $category) {
         $category->delete();
-
         return redirect()->route('category.index')->with([
             'message' => 'Deleted successfully',
             'alert-type' => 'success'
