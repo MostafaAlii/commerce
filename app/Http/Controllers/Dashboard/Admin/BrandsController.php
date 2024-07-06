@@ -25,6 +25,22 @@ class BrandsController extends Controller {
         }
     }
 
+    public function update(Request $request) {
+        try {
+            $brand = Brand::findOrFail($request->id);
+            $brand->update([
+                $brand->name = $request->name,
+                $brand->is_active = $request->is_active,
+            ]);
+            toastr()->success('تم التحديث بنجاح');
+            return redirect()->route('brands.index');
+        }
+        catch
+        (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'حدث خطا حاول مره اخرى']);
+        }
+    }
+
     public function destroy(Request $request) {
         Brand::findOrFail($request->id)->delete();
         toastr()->error('تم الحذف بنجاح');
