@@ -12,5 +12,6 @@ Route::group(
                 Route::get('dashboard', [Admin\DashboardController::class, 'index'])->name('admin.dashboard');
                 Route::resource('category', Admin\CategoryController::class);
                 Route::resource('brands', Admin\BrandsController::class);
+                Route::resource('sliders', Admin\SliderController::class);
         });
 });

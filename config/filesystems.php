@@ -44,6 +44,20 @@ return [
             'throw' => false,
         ],
 
+        'upload_image' => [
+            'driver' => 'local',
+            'root' => public_path('dashboard/img'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'gallery' => [
+            'driver' => 'local',
+            'root' => public_path('dashboard/img/gallery'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

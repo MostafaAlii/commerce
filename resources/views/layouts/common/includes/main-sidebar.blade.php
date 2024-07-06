@@ -38,6 +38,22 @@
                     </li>
                     <!-- End Brands Managment Menu-->
 
+                    <!-- Start Sliders Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">السلايدر</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#sliders_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">السلايدر</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="sliders_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('sliders.index')}}">السلايدر</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Sliders Managment Menu-->
+
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
                     <!-- menu item Elements-->
