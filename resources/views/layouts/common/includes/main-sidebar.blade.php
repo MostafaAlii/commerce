@@ -54,6 +54,22 @@
                     </li>
                     <!-- End Sliders Managment Menu-->
 
+                    <!-- Start Banners Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">البنرات</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#banners_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">البنرات</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="banners_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('banners.index')}}">البنرات</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Banners Managment Menu-->
+
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
                     <!-- menu item Elements-->

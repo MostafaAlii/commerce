@@ -13,5 +13,6 @@ Route::group(
                 Route::resource('category', Admin\CategoryController::class);
                 Route::resource('brands', Admin\BrandsController::class);
                 Route::resource('sliders', Admin\SliderController::class);
+                Route::resource('banners', Admin\BannerController::class);
         });
 });
