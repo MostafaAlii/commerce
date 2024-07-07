@@ -11,7 +11,7 @@ class SliderController extends Controller {
     }
 
     public function store(Request $request) {
-        //try {
+        try {
             $slider = Slider::create($request->input());
             if ($request->hasFile('image')) {
                 $fileName = 'slider-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -19,9 +19,9 @@ class SliderController extends Controller {
             }
             toastr()->success('تم الحفظ بنجاح');
             return redirect()->route('sliders.index');
-        /*} catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'حدث خطا حاول مره اخرى']);
-        }*/
+        }
     }
 
     public function update(Request $request, Slider $slider) {
