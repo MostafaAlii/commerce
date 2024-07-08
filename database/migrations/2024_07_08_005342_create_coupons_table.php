@@ -6,6 +6,16 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('type');
+            $table->unsignedBigInteger('value')->nullable();
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('use_times')->nullable();
+            $table->unsignedBigInteger('used_times')->default(0);
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('expire_date')->nullable();
+            $table->unsignedDecimal('greater_than')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

@@ -14,5 +14,6 @@ Route::group(
                 Route::resource('brands', Admin\BrandsController::class);
                 Route::resource('sliders', Admin\SliderController::class);
                 Route::resource('banners', Admin\BannerController::class);
+                Route::resource('coupons', Admin\CouponController::class);
         });
 });

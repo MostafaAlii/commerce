@@ -11,7 +11,7 @@ class BannerController extends Controller {
     }
 
     public function store(Request $request) {
-        //try {
+        try {
             $banner = Banner::create($request->input());
             if ($request->hasFile('image')) {
                 $fileName = 'banner-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -19,9 +19,9 @@ class BannerController extends Controller {
             }
             toastr()->success('تم الحفظ بنجاح');
             return redirect()->route('banners.index');
-        /*} catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'حدث خطا حاول مره اخرى']);
-        }*/
+        }
     }
 
     public function update(Request $request, Banner $banner) {

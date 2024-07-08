@@ -2,7 +2,7 @@
 @section('css')
 <link href="{{ URL::asset('assets/css/plugins/toastr.css') }}" rel="stylesheet">
 @section('title')
-الاقسام
+الكوبونات
 @stop
 @endsection
 @section('page-header')
@@ -32,47 +32,54 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <div class="card-header py-3 d-flex">
-                    <h6 class="m-0 font-weight-bold text-primary">الاقسام</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">الكوبونات</h6>
                     <div class="ml-auto">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">
+                        <a href="{{ route('coupons.create') }}" class="btn btn-primary">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            <span class="text">اضافة قسم جديد</span>
+                            <span class="text">اضافة كوبون جديد</span>
                         </a>
                     </div>
                 </div>
-                @include('dashboard.admin.category.filter.filter')
+                @include('dashboard.admin.coupons.filter.filter')
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                         <thead>
                         <tr>
-                            <th>الاسم</th>
-                            <th>عدد المنتجات</th>
-                            <th>القسم الرئيسى</th>
+                            <th>الكود</th>
+                            <th>القيمه</th>
+                            <th>عدد الاستخدام</th>
+                            <th>متاح الى</th>
+                            <th>اعلى من</th>
                             <th>الحاله</th>
-                            <th>اضاف منذ</th>
+                            <th>مضاف منذ</th>
                             <th class="text-center" style="width: 30px;">العمليات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($categories as $category)
+                        @forelse($coupons as $coupon)
                             <tr>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->products_count }}</td>
-                                <td>{{ $category->parent != null ? $category->parent->name : '-' }}</td>
-                                <td>{{ $category->status() }}</td>
-                                <td>{{ $category?->created_at?->diffForHumans() }}</td>
+                                <td>{{ $coupon->code }}</td>
+                                <td>{{ $coupon->value }} {{ $coupon->type == 'fixed' ? '$' : '%' }}</td>
+                                <td>{{ $coupon->used_times . ' / ' . $coupon->use_times }}</td>
+                                {{--<td>{{ $coupon->start_date != '' ? '' . \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d') . '' : '-' }} - {{ $coupon->expire_date != '' ? '' . \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d') . '' : '-' }} </td>--}}
+                                <td class="coupon-date">
+                                    {!! $coupon->start_date != '' ? '<span class="text-success">' . \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d') . '</span>' : '-' !!} <br> {!! $coupon->expire_date != '' ? '<span class="text-danger">' . \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d') . '</span>' : '-' !!}
+                                </td>
+                                <td>{{ $coupon->greater_than ?? '-' }}</td>
+                                <td>{{ $coupon->status() }}</td>
+                                <td>{{ $coupon->created_at?->diffForHumans() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('coupons.edit', $coupon->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-product-category-{{ $category->id }}').submit(); } else { return false; }" class="btn btn-danger">
+                                        <a href="javascript:void(0);" onclick="if (confirm('هل انت متاكد من الحذف?')) { document.getElementById('delete-product-coupon-{{ $coupon->id }}').submit(); } else { return false; }" class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="post" id="delete-product-category-{{ $category->id }}" class="d-none">
+                                    <form action="{{ route('coupons.destroy', $coupon->id) }}" method="post" id="delete-product-coupon-{{ $coupon->id }}" class="d-none">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -80,15 +87,15 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">No categories found</td>
+                                <td colspan="8" class="text-center">No coupons found</td>
                             </tr>
                         @endforelse
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="8">
                                     <div class="float-right">
-                                        {!! $categories->appends(request()->all())->links() !!}
+                                        {!! $coupons->appends(request()->all())->links() !!}
                                     </div>
                                 </td>
                             </tr>
