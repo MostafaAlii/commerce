@@ -2,7 +2,7 @@
 @section('css')
 <link href="{{ URL::asset('assets/css/plugins/toastr.css') }}" rel="stylesheet">
 @section('title')
-الاقسام
+المنتجات
 @stop
 @endsection
 @section('page-header')
@@ -32,47 +32,57 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
                 <div class="card-header py-3 d-flex">
-                    <h6 class="m-0 font-weight-bold text-primary">الاقسام</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">المنتجات</h6>
                     <div class="ml-auto">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">
+                        <a href="{{ route('products.create') }}" class="btn btn-primary">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            <span class="text">اضافة قسم جديد</span>
+                            <span class="text">اضافة منتج جديد</span>
                         </a>
                     </div>
                 </div>
-                @include('dashboard.admin.category.filter.filter')
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                         <thead>
                         <tr>
+                            <th>الصوره</th>
                             <th>الاسم</th>
-                            <th>عدد المنتجات</th>
-                            <th>القسم الرئيسى</th>
+                            <th>مميز</th>
+                            <th>القسم</th>
+                            <th>المخزون / الكميه</th>
+                            <th>السعر</th>
                             <th>الحاله</th>
-                            <th>اضاف منذ</th>
+                            <th>مضاف منذ</th>
                             <th class="text-center" style="width: 30px;">العمليات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($categories as $category)
+                        @forelse($products as $product)
                             <tr>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->products->count() }}</td>
-                                <td>{{ $category->parent != null ? $category->parent->name : '-' }}</td>
-                                <td>{{ $category->status() }}</td>
-                                <td>{{ $category?->created_at?->diffForHumans() }}</td>
+                                <td>
+                                    <img src="{{ $product?->ImagePath() }}" width="100">
+                                </td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->featured() }}</td>
+                                <td>{{ $product?->category?->name }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->status() }}</td>
+                                <td>{{ $product->created_at?->diffForHumans() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('products.images', $product->id) }}" class="btn btn-success">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-product-category-{{ $category->id }}').submit(); } else { return false; }" class="btn btn-danger">
+                                        <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-product-{{ $product->id }}').submit(); } else { return false; }" class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="post" id="delete-product-category-{{ $category->id }}" class="d-none">
+                                    <form action="{{ route('products.destroy', $product->id) }}" method="post" id="delete-product-{{ $product->id }}" class="d-none">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -80,15 +90,15 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">No categories found</td>
+                                <td colspan="9" class="text-center">No products found</td>
                             </tr>
                         @endforelse
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="9">
                                     <div class="float-right">
-                                        {!! $categories->appends(request()->all())->links() !!}
+                                        {!! $products->appends(request()->all())->links() !!}
                                     </div>
                                 </td>
                             </tr>
