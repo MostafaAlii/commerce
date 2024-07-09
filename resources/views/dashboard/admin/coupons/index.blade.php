@@ -63,7 +63,6 @@
                                 <td>{{ $coupon->code }}</td>
                                 <td>{{ $coupon->value }} {{ $coupon->type == 'fixed' ? '$' : '%' }}</td>
                                 <td>{{ $coupon->used_times . ' / ' . $coupon->use_times }}</td>
-                                {{--<td>{{ $coupon->start_date != '' ? '' . \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d') . '' : '-' }} - {{ $coupon->expire_date != '' ? '' . \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d') . '' : '-' }} </td>--}}
                                 <td class="coupon-date">
                                     {!! $coupon->start_date != '' ? '<span class="text-success">' . \Carbon\Carbon::parse($coupon->start_date)->format('Y-m-d') . '</span>' : '-' !!} <br> {!! $coupon->expire_date != '' ? '<span class="text-danger">' . \Carbon\Carbon::parse($coupon->expire_date)->format('Y-m-d') . '</span>' : '-' !!}
                                 </td>

@@ -51,9 +51,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'gallery' => [
+        'productGallery' => [
             'driver' => 'local',
-            'root' => public_path('dashboard/img/gallery'),
+            'root' => public_path('dashboard/img/product/productGallery'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

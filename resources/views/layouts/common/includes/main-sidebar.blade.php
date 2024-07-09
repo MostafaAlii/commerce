@@ -86,6 +86,22 @@
                     </li>
                     <!-- End Coupons Managment Menu-->
 
+                    <!-- Start Coupons Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">المنتاجات</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#products_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">المنتاجات</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="products_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('products.index')}}">المنتاجات</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Coupons Managment Menu-->
+
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
                     <!-- menu item Elements-->
