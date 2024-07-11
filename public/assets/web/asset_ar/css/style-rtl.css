@@ -1,0 +1,29 @@
+body {
+  direction: rtl;
+}
+.navbar .search button {
+  right: -8%;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+/* Sidebar */
+.sidebar .content {
+  right: -100%;
+}
+.sidebar .appear {
+  right: 0;
+}
+/* footer */
+.footer h2::after {
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  content: "";
+  width: 70px;
+  height: 1px;
+  background: var(--first-color);
+}
+.product-slider .box .content .price {
+    font-size: 15px;
+    flex-direction: column;
+}
