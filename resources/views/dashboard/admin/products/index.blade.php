@@ -75,7 +75,7 @@
                                         <a href="{{ route('products.images', $product->id) }}" class="btn btn-success">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">
+                                        <a href="{{-- route('products.edit', $product->id) --}}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-product-{{ $product->id }}').submit(); } else { return false; }" class="btn btn-danger">
