@@ -86,7 +86,7 @@
                     </li>
                     <!-- End Coupons Managment Menu-->
 
-                    <!-- Start Coupons Managment Menu-->
+                    <!-- Start Products Managment Menu-->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">المنتاجات</li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#products_managment">
@@ -100,7 +100,23 @@
                             <li><a href="{{route('products.index')}}">المنتاجات</a></li>
                         </ul>
                     </li>
-                    <!-- End Coupons Managment Menu-->
+                    <!-- End Products Managment Menu-->
+
+                    <!-- Start Packages Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">الباكيدج</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#package_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">الباكيدج</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="package_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('packages.index')}}">الباكيدج</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Packages Managment Menu-->
 
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>

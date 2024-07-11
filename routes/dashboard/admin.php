@@ -20,5 +20,6 @@ Route::group(
                 Route::post('products/image',[Admin\ProductController::class, 'saveProductImages'])->name('products.images.store');
                 Route::post('products/images/db',[Admin\ProductController::class, 'saveProductImagesDB'])->name('products.images.store.db');
                 Route::delete('{product_id}/image/{image_id}', [Admin\ProductController::class, 'destroyMedia'])->name('products.image.destroy');
+                Route::resource('packages', Admin\PackageController::class);
         });
 });
