@@ -95,7 +95,7 @@
   <div class="container">
       <ul class="d-flex align-items-center justify-content-center gap-3 py-3 mb-0">
           <li class="link-two">
-              <a href="{{-- route('web.index') --}}" class="text-uppercase"> home </a>
+              <a href="{{ route('site.home') }}" class="text-uppercase">{{trans('site/home.home')}}</a>
           </li>
           {{-- <li>
               <a href="{{ route('web.about_us') }}" class="text-uppercase"> {{ __('web.about_us') }}</a>

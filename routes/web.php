@@ -17,8 +17,9 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
-    Route::get('/', Front\HomeController::class)->name('home');
-    
+        Route::group(['as' => 'site.'], function () {
+            Route::get('/', Front\HomeController::class)->name('home');
+        });
 });
 /*Route::get('/dashboard', function () {
     return view('dashboard');
