@@ -31,7 +31,7 @@ Edit category
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <form action="{{ route('category.update', $productCategory->id) }}" method="POST">
+                <form action="{{ route('category.update', $productCategory->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row">
@@ -63,7 +63,11 @@ Edit category
                             @error('status')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
-    
+                    <div class="form-group">
+                        <label>الصوره : <span style="color:rgb(199, 8, 8)">*</span></label>
+                        <input class="form-control img" name="image" type="file" accept="image/*" onchange="previewImage(this);">
+                        <img class="img-thumbnail img-fluid" id="image-preview" src="{{$productCategory->ImagePath()}}" alt="{{$productCategory->name}}">
+                    </div>
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">Edit Category</button>
                     </div>
@@ -75,5 +79,15 @@ Edit category
 <!-- row closed -->
 @endsection
 @section('js')
-
+<script>
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#image-preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

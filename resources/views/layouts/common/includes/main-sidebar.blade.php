@@ -70,6 +70,22 @@
                     </li>
                     <!-- End Banners Managment Menu-->
 
+                    <!-- Start Offers Managment Menu-->
+                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">العروض</li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#offers_managment">
+                            <div class="pull-left">
+                                <i class="ti-palette"></i>
+                                <span class="right-nav-text">العروض</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="offers_managment" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('offers.index')}}">العروض</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Offers Managment Menu-->
+
                     <!-- Start Coupons Managment Menu-->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">الكوبونات</li>
                     <li>

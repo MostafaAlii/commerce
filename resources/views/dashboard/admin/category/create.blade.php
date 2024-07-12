@@ -65,6 +65,13 @@ Add Categories
                             @error('status')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label>الصوره :  <span style="color:rgb(199, 8, 8)">*</span></label>
+                            <input  class="form-control img" name="image"  type="file" accept="image/*" required >
+                        </div>
+                    </div>
     
                     <div class="form-group pt-4">
                         <button type="submit" name="submit" class="btn btn-primary">Add Category</button>
