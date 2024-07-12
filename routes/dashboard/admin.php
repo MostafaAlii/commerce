@@ -14,6 +14,7 @@ Route::group(
                 Route::resource('brands', Admin\BrandsController::class);
                 Route::resource('sliders', Admin\SliderController::class);
                 Route::resource('banners', Admin\BannerController::class);
+                Route::resource('offers', Admin\OfferController::class);
                 Route::resource('coupons', Admin\CouponController::class);
                 Route::resource('products', Admin\ProductController::class);
                 Route::get('products/images/{id}',[Admin\ProductController::class, 'addImages'])->name('products.images');

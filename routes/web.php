@@ -17,8 +17,11 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function () {
-    Route::get('/', Front\HomeController::class)->name('home');
-    
+        Route::group(['as' => 'site.'], function () {
+            Route::get('/', Front\HomeController::class)->name('home');
+            Route::get('category/{id}', [Front\HomeController::class, 'showCategoriesProductData'])->name('category.products');
+            Route::get('product/{id}', [Front\HomeController::class, 'productDetails'])->name('product.details');
+        });
 });
 /*Route::get('/dashboard', function () {
     return view('dashboard');

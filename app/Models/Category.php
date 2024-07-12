@@ -4,13 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Category extends Model
-{
-    use HasFactory;
-    protected $guarded = [];
+use App\Models\Traits\HasImage;
+class Category extends Model {
+    use HasFactory, HasImage;
+    protected $fillable = [
+        'name',
+        'slug',
+        'status',
+        'parent_id'
+    ];
     public function status() {
         return $this->status ? 'Active' : 'Inactive';
+    }
+
+    public function scopeActive($query) {
+        return $query->whereStatus(true) ;
     }
 
     public function parent() {

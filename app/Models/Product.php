@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo,BelongsToMany,HasMany,Morp
 use App\Models\Traits\HasImage;
 class Product extends Model {
     use HasFactory, HasImage;
-    protected $guarded = [];
+    protected $fillable = [
+        'name'
+    ];
 
     public function status() {
         return $this->status ? 'فعال' : 'غير فعال';

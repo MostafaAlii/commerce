@@ -47,6 +47,7 @@
                     <table id="datatable" class="table table-hover table-sm table-bordered p-0" data-page-length="50" style="text-align: center">
                         <thead>
                         <tr>
+                            <th>الصوره</th>
                             <th>الاسم</th>
                             <th>عدد المنتجات</th>
                             <th>القسم الرئيسى</th>
@@ -58,6 +59,9 @@
                         <tbody>
                         @forelse($categories as $category)
                             <tr>
+                                <td>
+                                    <img src="{{ $category?->ImagePath() }}" width="100">
+                                </td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->products->count() }}</td>
                                 <td>{{ $category->parent != null ? $category->parent->name : '-' }}</td>

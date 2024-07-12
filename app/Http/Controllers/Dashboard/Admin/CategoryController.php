@@ -5,8 +5,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 class CategoryController extends Controller {
     public function index() {
-        $categories = Category::/*withCount('products')
-            ->*/when(\request()->keyword != null, function ($query) {
+        $categories = Category::withCount('products')
+            ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
             ->when(\request()->status != null, function ($query) {
@@ -26,7 +26,11 @@ class CategoryController extends Controller {
         $input['name'] = $request->name;
         $input['status'] = $request->status;
         $input['parent_id'] = $request->parent_id;
-        Category::create($input);
+        $category = Category::create($input);
+        if ($request->hasFile('image')) {
+            $fileName = 'category-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $category->storeImage($request->file('image')->storeAs('category', $fileName, 'upload_image'));
+        }
         return redirect()->route('category.index')->with([
             'message' => 'Created successfully',
             'alert-type' => 'success'
@@ -54,6 +58,10 @@ class CategoryController extends Controller {
         $input['status'] = $request->status;
         $input['parent_id'] = $request->parent_id;
         $category->update($input);
+        if ($request->hasFile('image')) {
+            $fileName = 'category-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $category->updateImage($request->file('image')->storeAs('category', $fileName, 'upload_image'));
+        }
         return redirect()->route('category.index')->with([
             'message' => 'Updated successfully',
             'alert-type' => 'success'
